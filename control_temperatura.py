@@ -47,9 +47,9 @@ def controlar_temperatura():
             print(f"Humedad: {hum:.1f}%")
 
             # Verificar si la temperatura o la humedad superan los umbrales
-            if temp > TEMP_UMBRAL or hum >= HUM_UMBRAL:
+            if TEMP_UMBRAL < temp <= 20 or hum >= HUM_UMBRAL:
                 ventilador.value(1)  # Encender ventilador
-                print("Temperatura alta o humedad elevada. Ventilador ENCENDIDO.")
+                print("Temperatura entre 15 y 20 °C o humedad elevada. Ventilador ENCENDIDO.")
             else:
                 ventilador.value(0)  # Apagar ventilador
                 print("Temperatura y humedad normales. Ventilador apagado.")
