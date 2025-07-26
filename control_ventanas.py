@@ -111,14 +111,14 @@ def ejecutar_control_ventanas(temperatura):
     """
     global ventanas_abiertas, cierre_manual
 
-    if temperatura < 10:
+    if temperatura < 15:
         if ventanas_abiertas:  # Solo cerrar si estaban abiertas
             cierre_manual = False  # Si el sistema las cierra, permite reabrirlas en el futuro
             return cerrar_ventanas()
         else:
             print("Las ventanas ya están cerradas.")
     
-    elif temperatura > 15 and not cierre_manual:  # Solo abrir si NO se cerraron manualmente
+    elif temperatura > 20 and not cierre_manual:  # Solo abrir si NO se cerraron manualmente
         if not ventanas_abiertas:  # Solo abrir si estaban cerradas
             return abrir_ventanas()
         else:

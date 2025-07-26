@@ -8,7 +8,7 @@ i2c = I2C(scl=Pin(5), sda=Pin(4))
 # Inicializa el ADS1115 en la dirección I2C 0x48 (por defecto)
 ads = ADS1115(i2c)
 
-# Configuración del LED (Luz)
+# Configuración del LED
 led = Pin(2, Pin.OUT)
 
 # Configuración del RTC para obtener la hora

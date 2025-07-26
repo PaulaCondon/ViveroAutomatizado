@@ -8,10 +8,8 @@ i2c = I2C(scl=Pin(5), sda=Pin(4), freq=100000)  # Configurar frecuencia I2C
 # Inicializar ADS1115
 ads = ADS1115(i2c)  # Dirección por defecto 0x48
 
-# Configuración de la bomba de agua (simulada con un LED en D5)
 bomba = Pin(14, Pin.OUT, value=0)  # GPIO14 (D5) inicia apagada
 
-# **NUEVOS VALORES BASADOS EN MEDICIONES REALES**
 HUMEDAD_SECO_ADC = 25000    # Suelo completamente seco (0% humedad)
 HUMEDAD_HUMEDO_ADC = 12000   # Suelo completamente mojado (100% humedad)
 
