@@ -77,4 +77,3 @@ def obtener_humedad_suelo():
 def ejecutar_control_bomba():
     """Ejecuta la medición de humedad y controla la bomba una sola vez."""
     controlar_bomba()
-

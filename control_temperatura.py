@@ -68,4 +68,3 @@ def controlar_temperatura():
 def ejecutar_control_temperatura():
     """Ejecuta la medición de temperatura y controla el ventilador una sola vez."""
     controlar_temperatura()
-

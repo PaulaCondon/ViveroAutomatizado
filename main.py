@@ -86,4 +86,3 @@ if conectar_wifi():
     ejecutar() 
 else:
     print("No se intentará sincronizar la hora porque no hay conexión WiFi")  
-

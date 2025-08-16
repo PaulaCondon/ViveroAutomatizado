@@ -9,7 +9,7 @@ ENABLE_PWM = PWM(Pin(15), freq=1000)  # D8 - PWM motor ventana (EN)
 SERVER_URL = "http://192.168.136.88/telegram/comando.txt"
 
 # Variables de estado
-DUTY_CYCLE = 341  # PWM
+DUTY_CYCLE = 500  # PWM
 ventanas_abiertas = False  # Estado de las ventanas (False = cerradas, True = abiertas)
 cierre_manual = False  # False = No cerrado manualmente, True = Cerrado manualmente
 
@@ -32,7 +32,7 @@ def cerrar_ventanas():
     
     set_motor_speed(DUTY_CYCLE)  # Usa la variable global para la velocidad
     
-    time.sleep(7)  # Tiempo estimado para cierre completo
+    time.sleep(6)  # Tiempo estimado para cierre completo
     detener_motores()
     ventanas_abiertas = False  # Actualiza el estado de las ventanas
     print("Ventanas CERRADAS.")
@@ -48,7 +48,7 @@ def abrir_ventanas():
     
     set_motor_speed(DUTY_CYCLE)  # Usa la variable global para la velocidad
     
-    time.sleep(9)  # Tiempo estimado para apertura completa
+    time.sleep(7)  # Tiempo estimado para apertura completa
     detener_motores()
     ventanas_abiertas = True  # Actualiza el estado de las ventanas
     print("Ventanas ABIERTAS.")
@@ -131,7 +131,6 @@ def ejecutar_control_ventanas(temperatura):
 
 # Inicializar pines al importar el módulo
 inicializar_pines()
-
 
 
 

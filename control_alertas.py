@@ -10,8 +10,8 @@ SERVER_URL = "http://192.168.136.88/telegram/telegram.php"
 i2c = I2C(scl=Pin(5), sda=Pin(4))  # Pines GPIO5 (D1) y GPIO4 (D2) en ESP8266
 ads = ADS1115(i2c)  # Dirección I2C del ADS1115
 
-nivel_min = 4000       # Nivel cuando el tanque está vacío (ADC más bajo)
-nivel_max = 10000    # Nivel cuando el tanque está lleno (ADC más alto)
+nivel_min = 2000       # Nivel cuando el tanque está vacío (ADC más bajo)
+nivel_max = 9000    # Nivel cuando el tanque está lleno (ADC más alto)
 
 # FUNCIÓN PARA CODIFICAR URL MANUALMENTE EN MICROPYTHON
 def urlencode(message):
@@ -62,5 +62,4 @@ def verificar_nivel_tanque():
 
 def ejecutar_control_alertas():
         verificar_nivel_tanque()
-
 
