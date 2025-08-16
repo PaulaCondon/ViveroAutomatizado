@@ -1,6 +1,7 @@
 import machine
 import dht
 import time
+import control_ventanas 
 
 # Configurar el pin donde está conectado el DHT11
 dht_pin = machine.Pin(0)  # D3 (GPIO0)
@@ -41,15 +42,20 @@ def controlar_temperatura():
     try:
         temp = obtener_temperatura()
         hum = obtener_humedad_aire()
+        
+        if control_ventanas.ventanas_abiertas:
+            ventilador.value(0)
+            print("Ventanas abiertas. Ventilador APAGADO.")
+            return
 
         if temp is not None and hum is not None:  # Solo continuar si las lecturas son válidas
             print(f"Temperatura: {temp:.1f}°C")
             print(f"Humedad: {hum:.1f}%")
 
             # Verificar si la temperatura o la humedad superan los umbrales
-            if TEMP_UMBRAL < temp <= 20 or hum >= HUM_UMBRAL:
+            if temp > TEMP_UMBRAL or hum >= HUM_UMBRAL:
                 ventilador.value(1)  # Encender ventilador
-                print("Temperatura entre 15 y 20 °C o humedad elevada. Ventilador ENCENDIDO.")
+                print("Temperatura alta o humedad elevada. Ventilador ENCENDIDO.")
             else:
                 ventilador.value(0)  # Apagar ventilador
                 print("Temperatura y humedad normales. Ventilador apagado.")
@@ -62,3 +68,4 @@ def controlar_temperatura():
 def ejecutar_control_temperatura():
     """Ejecuta la medición de temperatura y controla el ventilador una sola vez."""
     controlar_temperatura()
+

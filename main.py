@@ -9,7 +9,7 @@ import network
 import time
 from ntptime import settime
 from machine import RTC
-
+    
 def conectar_wifi():
     """Conexión del ESP8266 a la red WiFi."""
     ssid = "MiRed"
@@ -86,3 +86,4 @@ if conectar_wifi():
     ejecutar() 
 else:
     print("No se intentará sincronizar la hora porque no hay conexión WiFi")  
+

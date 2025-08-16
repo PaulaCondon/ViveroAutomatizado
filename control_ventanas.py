@@ -6,10 +6,10 @@ import urequests
 VENTANA_IN1 = Pin(12, Pin.OUT, value=0)  # D6 - Dirección ventana (IN1)
 VENTANA_IN2 = Pin(13, Pin.OUT, value=0)  # D7 - Dirección ventana (IN2)
 ENABLE_PWM = PWM(Pin(15), freq=1000)  # D8 - PWM motor ventana (EN)
-SERVER_URL = "http://192.168.109.88/telegram/comando.txt"
+SERVER_URL = "http://192.168.136.88/telegram/comando.txt"
 
 # Variables de estado
-DUTY_CYCLE = 600  # PWM (0-1023)
+DUTY_CYCLE = 341  # PWM
 ventanas_abiertas = False  # Estado de las ventanas (False = cerradas, True = abiertas)
 cierre_manual = False  # False = No cerrado manualmente, True = Cerrado manualmente
 
@@ -26,13 +26,13 @@ def set_motor_speed(duty):
 def cerrar_ventanas():
     """Cierra las ventanas con un duty fijo."""
     global ventanas_abiertas
-    print("Ventanas CERRÁNDOSE...")
-    VENTANA_IN1.on()
-    VENTANA_IN2.off()
+    print("Ventanas CERRÁNDOSE...")    
+    VENTANA_IN2.on()     
+    VENTANA_IN1.off()
     
     set_motor_speed(DUTY_CYCLE)  # Usa la variable global para la velocidad
     
-    time.sleep(2)  # Tiempo estimado para cierre completo
+    time.sleep(7)  # Tiempo estimado para cierre completo
     detener_motores()
     ventanas_abiertas = False  # Actualiza el estado de las ventanas
     print("Ventanas CERRADAS.")
@@ -42,13 +42,13 @@ def cerrar_ventanas():
 def abrir_ventanas():
     """Abre las ventanas con un duty fijo."""
     global ventanas_abiertas
-    print("Ventanas ABRIÉNDOSE...")
-    VENTANA_IN1.off()
-    VENTANA_IN2.on()
+    print("Ventanas ABRIÉNDOSE...")   
+    VENTANA_IN2.off()    
+    VENTANA_IN1.on()
     
     set_motor_speed(DUTY_CYCLE)  # Usa la variable global para la velocidad
     
-    time.sleep(2)  # Tiempo estimado para apertura completa
+    time.sleep(9)  # Tiempo estimado para apertura completa
     detener_motores()
     ventanas_abiertas = True  # Actualiza el estado de las ventanas
     print("Ventanas ABIERTAS.")
@@ -131,4 +131,7 @@ def ejecutar_control_ventanas(temperatura):
 
 # Inicializar pines al importar el módulo
 inicializar_pines()
+
+
+
 

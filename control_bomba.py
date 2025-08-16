@@ -53,18 +53,18 @@ def controlar_bomba():
 
         # Encender la bomba si la humedad baja del 40%
         if humedad_porcentaje < HUMEDAD_ENCENDER :  
-            bomba.value(1)  # ENCENDER bomba
+            bomba.value(0)  # ENCENDER bomba
             print("Bomba ENCENDIDA")
 
         # Apagar la bomba si la humedad sube del 60%
         elif humedad_porcentaje > HUMEDAD_APAGAR :
-            bomba.value(0)  # APAGAR bomba
+            bomba.value(1)  # APAGAR bomba
             print("Bomba APAGADA")
 
         # Si está entre 40% y 60%, no hacer nada (histéresis)
         else:
             print("Humedad en zona segura, sin cambios en la bomba")
-            bomba.value(0)
+            bomba.value(1)
 
     except Exception as e:
         print(f"Error en la lectura: {e}")
@@ -77,3 +77,4 @@ def obtener_humedad_suelo():
 def ejecutar_control_bomba():
     """Ejecuta la medición de humedad y controla la bomba una sola vez."""
     controlar_bomba()
+
